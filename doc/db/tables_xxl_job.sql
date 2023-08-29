@@ -2,8 +2,14 @@
 # XXL-JOB v2.4.0
 # Copyright (c) 2015-present, xuxueli.
 
-CREATE database if NOT EXISTS `xxl_job` default character set utf8mb4 collate utf8mb4_unicode_ci;
-use `xxl_job`;
+CREATE database if NOT EXISTS `xxl_job_cluster` default character set utf8mb4 collate utf8mb4_unicode_ci;
+use `xxl_job_cluster`;
+
+# 公司内网开发使用，随手乱写密码，不涉及泄密；生产环境请更换密码
+create user 'xx_job_admin'@'192.168.0.%' identified by '&jd*ULJRE^YJMW32*#(>OE';
+# 将 xxl_job_cluster 分配给 xx_job_admin
+grant all privileges on xxl_job_cluster.* to 'xx_job_admin'@'192.168.0.%';
+flush privileges;
 
 SET NAMES utf8mb4;
 
